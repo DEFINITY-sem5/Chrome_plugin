@@ -6,7 +6,7 @@
     "version": "1.0",
     "default_locale": "en",
     "background" : {
-        "scripts" : ["js/popup.js"],
+        "scripts" : ["js/background.js"],
         "persistent": false
     },
     "browser_action": {
