@@ -1,0 +1,12 @@
+{
+	"appName" : {
+		"message" : "DEFINITY",
+		"description": "This extension will analyze a page, and show up if any fake news is detected"
+	},
+	"appDesc" : {
+		"message": "Shaping tomorrow's Internet with Artificial Intelligence."
+	},
+    "default": {
+        "message": "Default"
+    }
+}
