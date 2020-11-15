@@ -23,14 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var title_display = document.getElementById("title-display");
         var domain_display = document.getElementById("domain-display");
         var clickbait_display = document.getElementById("clickbait-display");
-        var profile_display = document.getElementById("profile-display");
-        var subj_display = document.getElementById("subj-display");
         var debug_display = document.getElementById("debug-display");
 
         var clickbait_prompt = document.getElementById("clickbait-prompt");
-        var profile_prompt = document.getElementById("profile-prompt");
-
-        var claimReview_display = document.getElementById("claimReviewDisplay");
 
         domain_display.innerHTML = page_domain;
 
@@ -47,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             // clickbait
-            clickbait_display.innerHTML = json.clickbait;
-            if (json.clickbait == "clickbait") {
+            clickbait_display.innerHTML = json.article_title;
+            if (json.article_title == "clickbait") {
                 clickbait_prompt.innerHTML = "Headline appears to be written to attract more views"
                 try {
                     clickbait_display.classList.remove("badge-success");
@@ -59,6 +54,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             } else {
                 clickbait_prompt.innerHTML = "Headline does not appear to sensationalise the news"
+                try {
+                    clickbait_display.classList.remove("badge-danger");
+                } catch (err) {
+                    console.log(err)
+                } finally {
+                    clickbait_display.classList.add("badge-success");
+                }
+            }
+
+            // fakenews
+            clickbait_display.innerHTML = json.article_text;
+            if (json.article_title == "legit news") {
+                clickbait_prompt.innerHTML = "News is perfect."
+                try {
+                    clickbait_display.classList.remove("badge-success");
+                } catch (err) {
+                    console.log(err)
+                } finally {
+                    clickbait_display.classList.add("badge-danger");
+                }
+            } else {
+                clickbait_prompt.innerHTML = "News appears to sensationalise the content, and has a content that is unverified."
                 try {
                     clickbait_display.classList.remove("badge-danger");
                 } catch (err) {
