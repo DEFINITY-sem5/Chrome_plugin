@@ -1,3 +1,4 @@
+console.log("datatext");
 function check_title(title) {
     title = title.toString().replace(/\s+/g, ' ').trim();
     var title_display = document.getElementById("title-display");
@@ -22,20 +23,23 @@ document.addEventListener('DOMContentLoaded', function () {
         var domain_display = document.getElementById("domain-display");             //to display host name
         domain_display.innerHTML = page_domain;                                     //displaying host name
         var title_display = document.getElementById("title-display")
-                    
         var debug_display = document.getElementById("debug-display");  
         var xhr = new XMLHttpRequest();
         var a = tab.url.toString();
+        console.log(a);
         var b = encodeURIComponent(a);
-        var c = ("http://192.168.175.2:5000/extract?url=" + b +"%20HTTP/1.1")
+        console.log(b);
+        var c = ("http://192.168.175.2:5000/extract?url=" + b) // +"%20HTTP/1.1"
         xhr.open('GET', c);
-        //document.write(c);
+       // document.write(c);
+        console.log(c);
         xhr.onload = function () {
+            console.log(this.responseText);
             var json = JSON.parse(this.responseText);
             debug_display.innerHTML = this.responseText;
             
-            title_display.innerHTML = json.title_article;               //title
-            
+            title_display.innerHTML = json.art_title;               //title
+            document.write(json)
 
 
         };
