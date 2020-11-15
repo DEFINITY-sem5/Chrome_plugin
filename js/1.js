@@ -25,12 +25,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     
         var debug_display = document.getElementById("debug-display");  
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://192.168.175.2:5000/extract?url=' + tab.url.toString(), true);
+        var a = tab.url.toString();
+        var b = encodeURIComponent(a);
+        var c = ("http://192.168.175.2:5000/extract?url=" + b +"%20HTTP/1.1")
+        xhr.open('GET', c);
+        //document.write(c);
         xhr.onload = function () {
             var json = JSON.parse(this.responseText);
             debug_display.innerHTML = this.responseText;
-
-            title_display.innerHTML = json.title;               //title
+            
+            title_display.innerHTML = json.title_article;               //title
             
 
 
